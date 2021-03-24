@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Open InVidious</title>
+    <link rel="manifest" href="/manifest.json" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/sw.js").then(
+            function onSuccess(registration) {
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope
+              );
+            },
+            function onError(err) {
+              console.log("ServiceWorker registration failed: ", err);
+            }
+          );
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <p>
+        Install the app on mobile to be able to open youtube videos via the
+        share button in invidious.
+      </p>
+      <pre></pre>
+      <script>
+        const pre = document.querySelector("pre");
+        pre.innerHTML = `"${window.location.search}"`;
+      </script>
+    </main>
+  </body>
+</html>

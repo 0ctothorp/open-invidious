@@ -1,0 +1,27 @@
+{
+  "name": "Open InVidious",
+  "display": "standalone",
+  "description": "InVidious opener",
+  "start_url": "/",
+  "background_color": "#000000",
+  "icons": [
+      {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "share_target": {
+      "action": "/",
+      "params": {
+          "title": "title",
+          "text": "text",
+          "url": "url"
+      }
+  }
+}
