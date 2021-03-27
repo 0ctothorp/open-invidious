@@ -17,7 +17,7 @@
     }
   ],
   "share_target": {
-      "action": "/",
+      "action": "/dupa",
       "params": {
           "title": "title",
           "text": "text",
