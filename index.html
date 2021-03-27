@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Open InVidious</title>
     <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" initial-scale="1.0" />
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
@@ -31,7 +32,7 @@
       <pre></pre>
       <script>
         const pre = document.querySelector("pre");
-        pre.innerHTML = `"${window.location.search}"`;
+        pre.innerHTML = JSON.stringify(window.location, null, 2);
       </script>
     </main>
   </body>
