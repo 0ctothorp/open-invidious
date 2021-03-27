@@ -5,7 +5,7 @@ self.addEventListener("activate", (event) => {});
 self.addEventListener("fetch", (event) => {
   if (event.request.method != "GET") return;
 
-  event.respondWith(async () => {
-    return fetch(event.request);
-  });
+  const promise = fetch(event.request);
+
+  event.respondWith(promise);
 });
