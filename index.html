@@ -31,11 +31,14 @@
           console.error(
             "Something went wrong with the share, or you didn't share from youtube"
           );
+          document.querySelector("#errors").innerHTML = "No text param in url";
         }
 
         const ytUrl = new URL(url.searchParams.text);
         if (!ytUrl) {
           console.error("You didn't share from youtube.");
+          document.querySelector("#errors").innerHTML =
+            "No youtube url in text search param";
         }
 
         let invidiousUrl = "https://invidious.tube/watch?v=";
@@ -45,12 +48,12 @@
         const videoId = ytUrl.pathname;
         invidiousUrl += videoId;
 
-        if(window.confirm(`Redirecting to ${invidiousUrl}`)) {
+        if (window.confirm(`Redirecting to ${invidiousUrl}`)) {
           window.location.href = invidiousUrl;
         }
       }
 
-      window.onload = main;
+      document.addEventListener("DOMContentLoaded", main);
     </script>
   </head>
   <body>
