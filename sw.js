@@ -1,3 +1,4 @@
+// Service worker just to make the app installable
 self.addEventListener("install", (event) => {});
 
 self.addEventListener("activate", (event) => {});

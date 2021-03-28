@@ -22,9 +22,38 @@
         });
       }
     </script>
+    <script>
+      function main() {
+        const url = new URL(window.location.toString());
+        if (url.pathname !== "/share") return;
+
+        if (!url.searchParams.text) {
+          console.error(
+            "Something went wrong with the share, or you didn't share from youtube"
+          );
+        }
+
+        const ytUrl = new URL(url.searchParams.text);
+        if (!ytUrl) {
+          console.error("You didn't share from youtube.");
+        }
+
+        let invidiousUrl = "https://invidious.tube/watch?v=";
+
+        // When a video is shared from youtube app, then it's in a form
+        // of youtu.be/<video_id>.
+        const videoId = ytUrl.pathname;
+        invidiousUrl += videoId;
+
+        if(window.confirm(`Redirecting to ${invidiousUrl}`)) {
+          window.location.href = invidiousUrl;
+        }
+      }
+    </script>
   </head>
   <body>
     <main>
+      <h1>Open InVidious</h1>
       <p>
         Install the app on mobile to be able to open youtube videos via the
         share button in invidious.
