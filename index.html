@@ -27,14 +27,15 @@
         const url = new URL(window.location.toString());
         if (url.pathname !== "/share") return;
 
-        if (!url.searchParams.text) {
+        const textParam = url.searchParams.get("text");
+        if (!textParam) {
           console.error(
             "Something went wrong with the share, or you didn't share from youtube"
           );
           document.querySelector("#errors").innerHTML = "No text param in url";
         }
 
-        const ytUrl = new URL(url.searchParams.text);
+        const ytUrl = new URL(decodeURIComponent(textParam));
         if (!ytUrl) {
           console.error("You didn't share from youtube.");
           document.querySelector("#errors").innerHTML =
@@ -45,12 +46,13 @@
 
         // When a video is shared from youtube app, then it's in a form
         // of youtu.be/<video_id>.
-        const videoId = ytUrl.pathname;
+
+        // Pathname has a leading slash
+        const videoId = ytUrl.pathname.substring(1);
         invidiousUrl += videoId;
 
-        if (window.confirm(`Redirecting to ${invidiousUrl}`)) {
-          window.location.href = invidiousUrl;
-        }
+        // if (window.confirm(`Redirecting to ${invidiousUrl}`))
+        window.location.href = invidiousUrl;
       }
 
       document.addEventListener("DOMContentLoaded", main);
