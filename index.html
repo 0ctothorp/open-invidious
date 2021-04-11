@@ -5,6 +5,31 @@
     <title>Open InVidious</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" initial-scale="1.0" />
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      main {
+        text-align: center;
+      }
+      #errors {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Open InVidious</h1>
+      <p>
+        Install the app on mobile to be able to open youtube videos via the
+        share button in <a href="https://redirect.invidious.io/" target="_blank">invidious</a>.
+      </p>
+      <pre></pre>
+      <p id="errors"></p>
+    </main>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
@@ -21,8 +46,7 @@
           );
         });
       }
-    </script>
-    <script>
+
       function main() {
         const url = new URL(window.location.toString());
         if (url.pathname !== "/share") return;
@@ -55,22 +79,8 @@
         window.location.href = invidiousUrl;
       }
 
-      document.addEventListener("DOMContentLoaded", main);
+      main();
+
     </script>
-  </head>
-  <body>
-    <main>
-      <h1>Open InVidious</h1>
-      <p>
-        Install the app on mobile to be able to open youtube videos via the
-        share button in invidious.
-      </p>
-      <pre></pre>
-      <p id="errors"></p>
-      <script>
-        const pre = document.querySelector("pre");
-        pre.innerHTML = JSON.stringify(window.location, null, 2);
-      </script>
-    </main>
   </body>
 </html>
