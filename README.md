@@ -1,7 +1,8 @@
 # Open InVidious
 
 A minimal effort PWA that lets you quickly open youtube videos in invidious.
-It only works on Android (Chrome). iOS (Safari) doesn't support share_target
+
+Unfortunately it only works on Android (Chrome). iOS (Safari) doesn't support share_target
 API :(
 
 ## How does it work?
